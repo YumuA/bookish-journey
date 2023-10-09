@@ -29,7 +29,7 @@
 
     <script>
         // Hacer una solicitud GET al servidor para obtener la información de las parejas y comentarios
-        fetch('/perras')
+        fetch('https://yumua.github.io/bookish-journey/data.json')
             .then(response => response.json())
             .then(data => {
                 const tablaParejasComentarios = document.getElementById('tablaParejasComentarios');

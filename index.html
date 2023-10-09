@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Parejas y Comentarios</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Parejas con Comentarios</h1>
+    <h1>Información de Parejas y Comentarios</h1>
+    
+    <h2>Parejas con Comentarios</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID de Pareja</th>
+                <th>Nombre de Pareja</th>
+                <th>Comentario</th>
+              </tr>
+              
+        </thead>
+        <tbody id="tablaParejasComentarios">
+        </tbody>
+    </table>
+</div>
+
+    <script>
+        // Hacer una solicitud GET al servidor para obtener la información de las parejas y comentarios
+        fetch('/perras')
+            .then(response => response.json())
+            .then(data => {
+                const tablaParejasComentarios = document.getElementById('tablaParejasComentarios');
+
+                // Recorrer los datos y crear filas en la tabla
+                data.forEach(parejas => {
+                    const fila = document.createElement('tr');
+                    fila.innerHTML = `
+                        <td>${parejas.id_pareja}</td>
+                        <td>${parejas.nombre}</td>
+                        <td>${parejas.comentarios}</td>
+                    `;
+                    tablaParejasComentarios.appendChild(fila);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener datos:', error);
+            });
+    </script>
+</body>
+</html>
